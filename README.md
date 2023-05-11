@@ -14,7 +14,16 @@
   - `main.js`
   - `manifest.json`
   - `styles.css`
+- Install LaTeX & pandoc, e.g. via brew:
+
+```
+brew install --cask basictex
+brew install pandoc
+```
+
+- If wanting to use doi citekeys, [download the modified doi2cite filter](https://github.com/hannahwoodward/pandoc-doi2cite/blob/main/doi2cite.lua), making a note of the download location
 - Open Obsidian and enable the plugin in `Obsidian > Preferences`
+- Update plugin settings in `Obsidian > Preferences > Community plugins > Pandoc References` 
 
 
 ## Development
