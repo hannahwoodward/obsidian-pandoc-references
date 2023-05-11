@@ -1,11 +1,10 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+  "id": "obsidian-pandoc-references",
+  "name": "Pandoc References",
+  "version": "0.1.0",
+  "minAppVersion": "0.15.0",
+  "description": "Adds a pandoc-generated reference list to the sidebar.",
+  "author": "hannahwoodward",
+  "authorUrl": "https://github.com/hannahwoodward/obsidian-reference-list",
+  "isDesktopOnly": true
 }
