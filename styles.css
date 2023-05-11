@@ -1,8 +1,21 @@
-/*
+.csl-entry {
+  margin-bottom: 1em;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.pandoc-refs-heading {
+  margin-top: 0.25em;
+}
 
-If your plugin does not need CSS, delete this file.
+.pandoc-refs-setting .setting-item-control {
+  max-width: 300px;
+  width: 100%;
+}
 
-*/
+.pandoc-refs-setting .setting-item-control input {
+  width: 100%;
+}
+
+.pandoc-refs-setting .setting-item-control textarea {
+  min-height: 150px;
+  width: 100%;
+}
