@@ -132,8 +132,10 @@ export default class PandocReferences extends Plugin {
             await setTimeout(async () => {
                 try {
                     const renderer = rootLeaf.view.currentMode.renderer;
-                    // i = 1 to skip heading rendering, which seems to break things
-                    for (let i = 1; i < renderer.sections.length; i++) {
+                    for (let i = 0; i < renderer.sections.length; i++) {
+                        if (renderer.sections[i].el.classList.contains('mod-header') || renderer.sections[i].el.classList.contains('mod-footer')) {
+                            continue;
+                        }
                         renderer.sections[i].el.setAttribute('data-section-id', i);
                     }
                     const elHtmlString = await this.runPandocCmd(
@@ -146,7 +148,11 @@ export default class PandocReferences extends Plugin {
                     const refsHtml = elHtml.querySelector('#refs');
                     refsHtml && refsHtml.remove();
 
-                    for (let i = 1; i < renderer.sections.length; i++) {
+                    for (let i = 0; i < renderer.sections.length; i++) {
+                        if (renderer.sections[i].el.classList.contains('mod-header') || renderer.sections[i].el.classList.contains('mod-footer')) {
+                            continue;
+                        }
+
                         const sectionId = renderer.sections[i].el.getAttribute('data-section-id');
                         const newSectionHtml = elHtml.querySelector(`[data-section-id="${sectionId}"]`);
                         if (newSectionHtml) {
@@ -158,7 +164,7 @@ export default class PandocReferences extends Plugin {
                 } catch (e) {
                     console.error(e);
                 }
-            }, 5);
+            }, 10);
 
             this.previewReady = true;
         });
