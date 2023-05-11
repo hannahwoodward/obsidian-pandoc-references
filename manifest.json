@@ -1,10 +1,10 @@
 {
   "id": "obsidian-pandoc-references",
   "name": "Pandoc References",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "minAppVersion": "0.15.0",
-  "description": "Adds a pandoc-generated reference list to the sidebar.",
+  "description": "A plugin to add a pandoc-generated reference list to sidebar, and render inline citations in reader/preview mode.",
   "author": "hannahwoodward",
-  "authorUrl": "https://github.com/hannahwoodward/obsidian-reference-list",
+  "authorUrl": "https://github.com/hannahwoodward/obsidian-pandoc-references",
   "isDesktopOnly": true
 }

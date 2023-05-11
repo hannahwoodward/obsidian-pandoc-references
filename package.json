@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-sample-plugin",
+  "name": "obsidian-pandoc-references",
   "version": "1.0.0",
-  "description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+  "description": "A plugin for Obsidian (https://obsidian.md) which adds a pandoc-generated reference list to sidebar, and renders inline citations in reader/preview mode.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
