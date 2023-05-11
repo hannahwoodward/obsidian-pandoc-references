@@ -13,7 +13,6 @@ export class PandocReferencesSettingTab extends PluginSettingTab {
         const { containerEl } = this;
 
         containerEl.empty();
-        containerEl.classList.add();
         containerEl.createEl('h2', { text: 'Pandoc References Settings' });
 
         new Setting(containerEl)
