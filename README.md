@@ -1,5 +1,9 @@
 # Obsidian Pandoc References Plugin
 
+- A plugin for [Obsidian](https://obsidian.md) which uses Pandoc to generate a reference list in the sidebar from the current active file, and to render the Pandoc-style inline citations in reader/preview mode.
+- Can understand citekeys (e.g. `[@Kasting_1993]`), as well as doi (e.g. `[@doi:10.1006/icar.1993.1010]`) by using the [doi2cite filter](https://github.com/hannahwoodward/pandoc-doi2cite/blob/main/doi2cite.lua).
+- Recommended to be installed alongside the [Citations plugin](https://github.com/hans/obsidian-citation-plugin), which allows for Pandoc-style inline citations to be inserted into markdown, and the [Pandoc plugin](https://github.com/OliverBalfour/obsidian-pandoc), which adds support for exporting files such as pdf, docx, and LaTeX through Pandoc.
+
 ## Installation
 
 - Install [NodeJS](https://nodejs.org/en)
@@ -21,9 +25,40 @@ brew install --cask basictex
 brew install pandoc
 ```
 
-- If wanting to use doi citekeys, [download the modified doi2cite filter](https://github.com/hannahwoodward/pandoc-doi2cite/blob/main/doi2cite.lua), making a note of the download location
 - Open Obsidian and enable the plugin in `Obsidian > Preferences`
+
+
+### Plugin settings
+
+- Export bibliography from your reference manager
 - Update plugin settings in `Obsidian > Preferences > Community plugins > Pandoc References` 
+- Basic usage for Pandoc reference list arguments (replacing the `/path/to` with the full paths to the respective files):
+
+```
+-f markdown -t html --bibliography /path/to/bibliography.bib --citeproc {{file}}
+```
+
+- Note that `{{file}}` will be automatically be replaced by the plugin with the current active file
+- The Pandoc reader view arguments will likely be the same, but without the `{{file}}` suffix
+
+#### Example with doi citekeys (e.g. `[@doi:10.1006/icar.1993.1010]`)
+
+- [Download the modified doi2cite filter](https://github.com/hannahwoodward/pandoc-doi2cite/blob/main/doi2cite.lua)
+- Update settings (the `__from_DOI.bib` file does not need to exist, but will be created and updated by the filter to internally track citations)
+- Note that `--citeproc {{file}}` should appear at the end of the script
+
+```
+-f markdown -t html --bibliography /path/to/bibliography.bib --bibliography /path/to/__from_DOI.bib --lua-filter /path/to/pandoc-doi2cite/doi2cite.lua --citeproc {{file}}
+```
+
+#### Example with custom citation style language (CSL):
+
+- Browse and download a style from https://github.com/citation-style-language/styles
+- Example with `apa.csl`:
+
+```
+-f markdown -t html --bibliography /path/to/bibliography.bib --csl /path/to/apa.csl --citeproc {{file}}
+```
 
 
 ## Development
