@@ -14,10 +14,11 @@ const DEFAULT_SETTINGS: PandocReferencesSettings = {
 }
 
 export default class PandocReferences extends Plugin {
+    activeFileLastUpdated: null;
+    activeFileName: null;
+    activeFileRefsHash: null;
     citationCount: 0;
-    htmlCache: null;
     sidebarReady: false;
-    previewRendering: true;
     statusBar: null;
     settings: PandocReferencesSettings;
 
