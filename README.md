@@ -31,6 +31,7 @@ brew install pandoc
 ### Plugin settings
 
 - Export bibliography from your reference manager
+  - Note that the same bibliography can be used as in the [Citations plugin](https://github.com/hans/obsidian-citation-plugin)
 - Update plugin settings in `Obsidian > Preferences > Community plugins > Pandoc References` 
 - Basic usage for Pandoc reference list arguments (replacing the `/path/to` with the full paths to the respective files):
 
@@ -49,6 +50,14 @@ brew install pandoc
 
 ```
 -f markdown -t html --bibliography /path/to/bibliography.bib --bibliography /path/to/__from_DOI.bib --lua-filter /path/to/pandoc-doi2cite/doi2cite.lua --citeproc {{file}}
+```
+
+- If using the [Citations plugin](https://github.com/hans/obsidian-citation-plugin), you may want to update the following settings:
+
+```
+Markdown citation templates:
+Primary: [@doi:{{DOI}}]
+Secondary: @doi:{{DOI}}
 ```
 
 #### Example with custom citation style language (CSL):
