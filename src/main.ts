@@ -5,14 +5,12 @@ import { PandocReferencesView, VIEW_TYPE_REFERENCE_LIST } from 'src/PandocRefere
 
 interface PandocReferencesSettings {
     pandocArgs: string,
-    pandocPath: string,
-    pandocReaderArgs: string,
+    pandocPath: string
 }
 
 const DEFAULT_SETTINGS: PandocReferencesSettings = {
     pandocArgs: null,
-    pandocPath: null,
-    pandocReaderArgs: null
+    pandocPath: null
 }
 
 export default class PandocReferences extends Plugin {
@@ -35,7 +33,7 @@ export default class PandocReferences extends Plugin {
         this.statusBar = this.addStatusBarItem();
         this.sidebarReady = true;
 
-        if (!this.settings.pandocReaderArgs) {
+        if (!this.settings.pandocArgs) {
             return;
         }
 
@@ -88,7 +86,8 @@ export default class PandocReferences extends Plugin {
         // Convert pandocArgs from string into array for execa
         const pandocArgs = args
             .split(' ')
-            .map(item => item.replace('{{file}}', filepath));
+            .map(item => item.replace('{{file}}', filepath))
+            .filter(item => item !== '');
 
         const { stdout } = await execa(pandocPath, pandocArgs, opts);
 
@@ -103,7 +102,7 @@ export default class PandocReferences extends Plugin {
     //
     //         try {
     //             const elHtmlString = await this.runPandocCmd(
-    //                 this.settings.pandocReaderArgs,
+    //                 this.settings.pandocArgs,
     //                 '',
     //                 { input: context.el.outerHTML }
     //             );
@@ -139,7 +138,7 @@ export default class PandocReferences extends Plugin {
                         renderer.sections[i].el.setAttribute('data-section-id', i);
                     }
                     const elHtmlString = await this.runPandocCmd(
-                        this.settings.pandocReaderArgs,
+                        this.settings.pandocArgs,
                         '',
                         { input: renderer.previewEl.outerHTML }
                     );

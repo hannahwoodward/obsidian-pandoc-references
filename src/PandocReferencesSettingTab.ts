@@ -31,7 +31,7 @@ export class PandocReferencesSettingTab extends PluginSettingTab {
 
         new Setting(containerEl)
             .setName('Pandoc reference list arguments')
-            .setDesc('Set arguments for generating reference list. Add {{file}} where you would like the active filepath to be inserted.')
+            .setDesc('Set arguments for generating reference list and rendering inline citations in reader view. Add {{file}} where the active filepath should be inserted.')
             .setClass('pandoc-refs-setting')
             .addTextArea(
                 text => text
@@ -39,20 +39,6 @@ export class PandocReferencesSettingTab extends PluginSettingTab {
                     .setValue(this.plugin.settings.pandocArgs)
                     .onChange(async (value) => {
                         this.plugin.settings.pandocArgs = value;
-                        await this.plugin.saveSettings();
-                    })
-            );
-
-        new Setting(containerEl)
-            .setName('Pandoc reader view arguments')
-            .setDesc('Set arguments for rendering inline citations in reader view.')
-            .setClass('pandoc-refs-setting')
-            .addTextArea(
-                text => text
-                    .setPlaceholder('-f markdown -t html --bibliography /path/to/Astro.bib --bibliography /path/to/__from_DOI.bib --lua-filter /path/to/doi2cite.lua --citeproc')
-                    .setValue(this.plugin.settings.pandocReaderArgs)
-                    .onChange(async (value) => {
-                        this.plugin.settings.pandocReaderArgs = value;
                         await this.plugin.saveSettings();
                     })
             );
