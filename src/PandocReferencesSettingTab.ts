@@ -30,7 +30,7 @@ export class PandocReferencesSettingTab extends PluginSettingTab {
             );
 
         new Setting(containerEl)
-            .setName('Pandoc reference list arguments')
+            .setName('Pandoc arguments')
             .setDesc('Set arguments for generating reference list and rendering inline citations in reader view. Add {{file}} where the active filepath should be inserted.')
             .setClass('pandoc-refs-setting')
             .addTextArea(
